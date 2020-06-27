@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <h3>Your Adventures:</h3>
+    <div *ngIf="items">
+        <div class="row row-cols-3">
+            <div class="cart-item" *ngFor="let item of items">
+                <div class="mx-2 my-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ item.img }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Travelling to: {{ item.destination }}</h5>
+                                <p class="card-text">{{ item.description }}</p>
+                                <p class="card-text">From: {{ item.date }}</p>
+                                <p class="card-text">For: {{ item.duration }}</p>
+                                <h4>Exclusive Price{{ item.price | currency }}</h4>
+                                
+                            </div>
+                        </div><!--card-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>TOTAL: {{ total | currency  }}</h3>
+        <h2 *ngIf="discount >= 200 && discount < 500" class="bg-info">DISCOUNT 10%  </h2>
+        <h2 *ngIf="discount >= 500" class="bg-info">DISCOUNT 20%  </h2>
+        <h1 class="bg-primary"> NEW TOTAL {{ discount | currency  }}</h1>
+        <button class="btn btn-primary"  (click)="confirmation()">Book Now!</button>
+    </div>
+</div>
+
